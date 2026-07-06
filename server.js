@@ -1,13 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
 
 const authRoutes = require('./routes/auth');
 const shopRoutes = require('./routes/shops');
 const foodRoutes = require('./routes/foods');
 const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
+
+
+
+console.log(process.env);
+console.log("Mongo:", process.env.MONGODB_URI);
 
 const app = express();
 
